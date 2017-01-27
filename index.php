@@ -26,6 +26,7 @@ function displayMenuItems($inventory)
 {
 	$menu = '';
 
+	//for each item in the inventory, add the following: 
 	foreach ($inventory as $item){
 		//quantity picker
 		$menu .= '<select name="'.$item->name.'._quantity">';
@@ -34,6 +35,8 @@ function displayMenuItems($inventory)
 			$menu .= '<option value='.$i.'>'.$i.'</option>';
 		}
 		$menu .= '</select>';
+
+		//name and description
 		$menu .= '<label>'.$item->name.': '.$item->description.'</label><br/>';
 	}
 
