@@ -1,47 +1,38 @@
 <?php
 
-class MenuItem {
-	public $name;
-	public $description;
-	public $price;
+require 'MenuItem.php';
+require 'ExampleItem.php';
 
-	function __construct($name, $description)
-	{
-		$this->name = $name;
-		$this->description = $description;
-	}
-}
+$taco_extras = array();
+$taco_extras['cojita cheese'] = '.50';
+$taco_extras['jalapenos'] = '.25';
+$standard_proteins = array('beef', 'chicken','pork','veggie crumble');
 
-//example items 
-$item1 = new MenuItem('Apple', 'a red apple');
-$item2 = new MenuItem('Corn', 'a cob of corn');
 
+$item1 = new ExampleItem('Taco', 'Your favorite meat with lettuce, cheese, and our special sauce.', 
+	3.25, array('2', '4','6', '8'), $standard_proteins, $taco_extras);
+
+$item2 = new ExampleItem('Burrito', 'Tortilla filled with rice, beans, cheese, and your choice of protein.', 
+	4, array('small', 'medium', 'huge!'), $standard_proteins, $taco_extras);
 
 //sample array of items 
 $inventory = array($item1, $item2);
 
-
-//function that turns items into form inputs
 function displayMenuItems($inventory)
 {
 	$menu = '';
 
-	//for each item in the inventory, add the following: 
-	foreach ($inventory as $item){
-		//quantity picker
-		$menu .= '<select name="'.$item->name.'._quantity">';
-		for ($i = 0; $i <= 10; $i++)
-		{
-			$menu .= '<option value='.$i.'>'.$i.'</option>';
-		}
-		$menu .= '</select>';
-
-		//name and description
-		$menu .= '<label>'.$item->name.': '.$item->description.'</label><br/>';
+	//loop over items in inventory and get its input fields. 
+	foreach($inventory as $item) 
+	{
+		//add input fields to the menu
+		$menu .= $item->toFormField();
 	}
 
+	//return the full menu
 	return $menu;
 }
+
 
  ?>
 <html>
@@ -65,7 +56,7 @@ function displayMenuItems($inventory)
  <body>
  	<h1>Menu</h1>
  	<form >
- 		<label>Entrees</label><br/>
+ 		<h4>Entrees</h4><br/>
  		<?php 
  			echo displayMenuItems($inventory);
  		 ?>
