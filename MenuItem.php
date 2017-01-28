@@ -67,15 +67,8 @@
 		// false if the item is not available for sale. Child classes will maintain counts of their own inventory.
 		public function sell() 
 		{
-			if ($this->sell()) //call child's sell() method. 
-			{
-				self::$INVENTORY_SIZE--; //decrease number of items in stock. 
-				return true;
-			} 
-			else 
-			{
-				return false;
-			}
+			//decrease inventory by one.
+			self::$INVENTORY_SIZE--;
 		}
 	}
 

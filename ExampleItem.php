@@ -58,6 +58,22 @@ class ExampleItem extends MenuItem
 	}
 
 
+	//checks that item is available for sale, and decrements its inventory to reflect sale. 
+	public function sell()
+	{
+		if (self::$IN_STOCK > 0)
+		{
+			self:$IN_STOCK--;
+			parent::sell();
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+	}
+
+
 }
 
 
