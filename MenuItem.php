@@ -63,9 +63,8 @@
 		}
 
 
-		//function to remove item from inventory upon purchase. Returns true if successful, 
-		// false if the item is not available for sale. Child classes will maintain counts of their own inventory.
-		public function sell() 
+		//function to remove item from inventory upon purchase.
+		public function sell()
 		{
 			//decrease inventory by one.
 			self::$INVENTORY_SIZE--;
