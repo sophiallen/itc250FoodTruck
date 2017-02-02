@@ -25,7 +25,7 @@ class MenuDisplay
 				'olives' => .25
 			);
 
-		$standard_quantities = array(1,2,3,4,5,6,7,8,9,10);
+		$standard_quantities = array(1,2,3,4,5,6,7,8);
 		$entrees = array(
 			new EntreeItem('Taco', 'Your favorite meat with lettuce, cheese, and our special sauce.', 3.25, 
 			 $standard_quantities,  $standard_proteins, $standard_toppings),
@@ -47,9 +47,5 @@ class MenuDisplay
 	pubic function 
 
 }
-
-
-
-
 
 ?>

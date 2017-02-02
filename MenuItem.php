@@ -6,7 +6,6 @@
 *	@author Sophia Allen
 **/
 
-
 	abstract class MenuItem 
 	{
 		public $name; 
