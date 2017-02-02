@@ -8,7 +8,7 @@
 * @author Sophia Allen
 **/
 
-class ExampleItem extends MenuItem 
+class EntreeItem extends MenuItem 
 {
 	protected static $IN_STOCK = 0;
 	public $options;
@@ -19,10 +19,10 @@ class ExampleItem extends MenuItem
 	*	@param $options: array of the flavor/meat options available for this item type
 	*	@param $extras: associative array of additional items that may be added, and their included costs. 
 	*/
-	public function __construct($name, $description, $price, $purchase_sizes, $options, $extras)
+	public function __construct($name, $description, $price, $quantities, $options, $extras)
 	{
 		//give basic information to parent class (MenuItem). 
-		parent::__construct($name, $description, $price, $purchase_sizes);
+		parent::__construct($name, $description, $price, $quantities);
 
 		//initialize properties unique to this class
 		$this->options = $options;
@@ -46,6 +46,8 @@ class ExampleItem extends MenuItem
 		$field .= "<br/> Extras: ";
 		$field .= '<select name='.$this->name.'_extras>';
 
+
+		//TODO: MAKE EXTRAS CHECKBOXES (NOT SELECTS)
 		foreach ($this->extras as $extra=>$price)
 		{
 			$field .= '<option value='.$extra.'>'.$extra.'  +'.$price.'</option>';
@@ -72,12 +74,6 @@ class ExampleItem extends MenuItem
 			return false;
 		}
 	}
-
-
 }
-
-
-
-
 
 ?>

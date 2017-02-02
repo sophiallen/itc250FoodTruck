@@ -11,6 +11,7 @@
 	{
 		public $name; 
 		public $description;
+		public $quantities;
 		public $purchase_sizes;
 		protected $ID;
 
@@ -25,7 +26,7 @@
 			@param $price: the price per single unit of the item. 
 			@param $purchase_sizes: an array of purchase size options for the item. Ex: ['small', 'medium', 'large']
 		*/
-		public function __construct($name, $description, $price, $purchase_sizes)
+		public function __construct($name, $description, $price, $quantities, $purchase_sizes)
 		{
 			self::$INVENTORY_SIZE += 1;
 			$this->ID = self::$INVENTORY_SIZE;
@@ -33,6 +34,7 @@
 			$this->name = $name;
 			$this->description = $description;
 			$this->price = $price;
+			$this->quantities = $quantities;
 			$this->purchase_sizes = $purchase_sizes;
 
 			//increment number of items in inventory and generate ID
@@ -53,9 +55,9 @@
 			$menu .= 'Quantity: <select name="'.$this->name.'_quantity">';
 
 			//purchase size options
-			for ($i = 0; $i < sizeof($this->purchase_sizes); $i++)
+			for ($i = 0; $i < sizeof($this->quantities); $i++)
 			{
-				$menu .= '<option value='.$i.'>'.$this->purchase_sizes[$i].'</option>';
+				$menu .= '<option value='.$i.'>'.$this->quantities[$i].'</option>';
 			}
 			$menu .= '</select>';
 
