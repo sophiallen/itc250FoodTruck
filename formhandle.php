@@ -1,42 +1,38 @@
 <?php
-
-
-/*
-	Formhandle.php senses and responds to post requests by calculating the order total and displaying the results. 
+	echo '<pre>';
+	$data = json_decode($_POST['order_data']);
+/* Result: 
+object(stdClass)#1 (3) {
+  ["Taco"]=>
+  object(stdClass)#2 (3) {
+    ["quantity"]=>
+    string(1) "1"
+    ["protein"]=>
+    string(4) "beef"
+    ["extras"]=>
+    string(4) "none"
+  }
+  ["Burrito"]=>
+  object(stdClass)#3 (3) {
+    ["quantity"]=>
+    string(1) "2"
+    ["protein"]=>
+    string(4) "beef"
+    ["extras"]=>
+    string(4) "none"
+  }
+  ["Quesadilla"]=>
+  object(stdClass)#4 (3) {
+    ["quantity"]=>
+    string(1) "3"
+    ["protein"]=>
+    string(4) "beef"
+    ["extras"]=>
+    string(4) "none"
+  }
+}
 */
 
-
-//Sense POST request here
-
-
-
-//Validate (strip "special requests" of special chars) here
-
-
-
-
-//Parse and extract order data here
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//display results to the user. 
-
-
-
-
-
-
-
+	var_dump($data);
+	echo '</pre>';
 ?>

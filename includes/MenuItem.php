@@ -11,7 +11,6 @@
 		public $name; 
 		public $description;
 		public $quantities;
-		public $purchase_sizes;
 		protected $ID;
 
 		//static property to track total number of items in stock, and assist in generating IDs for menu items. 
@@ -23,9 +22,9 @@
 			@param $name: the name of the item to be displayed. 
 			@param $description: a short description of the menu item. 
 			@param $price: the price per single unit of the item. 
-			@param $purchase_sizes: an array of purchase size options for the item. Ex: ['small', 'medium', 'large']
+			@param $quantities: an array of quantity options for the item. Ex: [1,2,3,4,5]
 		*/
-		public function __construct($name, $description, $price, $quantities, $purchase_sizes)
+		public function __construct($name, $description, $price, $quantities)
 		{
 			self::$INVENTORY_SIZE += 1;
 			$this->ID = self::$INVENTORY_SIZE;
@@ -34,7 +33,6 @@
 			$this->description = $description;
 			$this->price = $price;
 			$this->quantities = $quantities;
-			$this->purchase_sizes = $purchase_sizes;
 
 			//increment number of items in inventory and generate ID
 
@@ -51,7 +49,7 @@
 			$menu .= '<label> $'.$this->price.' |  <strong> '.$this->name.':</strong> '.$this->description.'</label><br/>';
 
 			//quantity picker
-			$menu .= 'Quantity: <select name="'.$this->name.'_quantity">';
+			$menu .= 'Quantity: <select class="quantity" name="'.$this->name.'_quantity">';
 
 			//purchase size options
 			for ($i = 0; $i < sizeof($this->quantities); $i++)
@@ -62,7 +60,6 @@
 
 			return $menu;
 		}
-
 
 		//function to remove item from inventory upon purchase.
 		public function sell()

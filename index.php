@@ -1,4 +1,5 @@
-<?php require 'MenuDisplay.php'; ?>
+<?php require 'includes/MenuDisplay.php'; ?>
+
 <html>
  <head>
  	<title>Food Truck</title>
@@ -19,13 +20,18 @@
  </head>
  <body>
  	<h1>Menu</h1>
- 	<form >
+ 	<form action="formhandle.php" method="post">
  		<h4>Entrees</h4><br/>
  		<?php 
  			$menu = new MenuDisplay();
- 			echo $menu->$form;
+ 			echo $menu->get_menu();
  		 ?>
+ 		 <input type="hidden"  id="formData" name="order_data" value=""/>
  	</form>
-
+ 	<button id="sendOrder">Submit Order</button>
+ 	<!-- JQuery -->
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ 	<!--Js for submitting the form as a json object (makes parsing during formhandle.php easier)-->
+ 	<script src="js/submitForm.js"></script>
  </body>
  </html>

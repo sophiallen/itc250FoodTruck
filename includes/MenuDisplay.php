@@ -14,18 +14,15 @@ class MenuDisplay
 	private $entrees = [];
 	private $drinks = [];
 	private $sides = [];
-	public $form = '';
+	protected $form = '';
 	//intializes menu display with standard menu items. 
 	function __construct()
 	{
 		$standard_proteins = array('beef', 'chicken','pork','veggie crumble');
-		$standard_toppings = array(
-				'cheese' => .25,
-				'jalapenos' => .50,
-				'olives' => .25
-			);
+		$standard_toppings = array('none','cheese','jalapenos','olives');
 
-		$standard_quantities = array(1,2,3,4,5,6,7,8);
+		$standard_quantities = array(0,1,2,3,4,5,6,7,8);
+		//($name, $description, $price, $quantities, $options, $extras)
 		$entrees = array(
 			new EntreeItem('Taco', 'Your favorite meat with lettuce, cheese, and our special sauce.', 3.25, 
 			 $standard_quantities,  $standard_proteins, $standard_toppings),
@@ -44,8 +41,10 @@ class MenuDisplay
 		$this->form = $menu;
 	}
 
-	pubic function 
-
+	public function get_menu()
+	{
+		return $this->form;
+	}
 }
 
 ?>
