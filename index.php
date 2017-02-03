@@ -15,6 +15,9 @@
  			padding: 1.5em;
  			font-family: 'calibri';
  		}
+ 		textarea {
+ 			width: 50%;
+ 		}
 
  	</style>
  </head>
@@ -26,6 +29,9 @@
  			$menu = new MenuDisplay();
  			echo $menu->get_menu();
  		 ?>
+ 		 <label>Special Instructions: </label><br/>
+ 		 <textarea name="special_instructions"></textarea>
+
  		 <input type="hidden"  id="formData" name="order_data" value=""/>
  	</form>
  	<button id="sendOrder">Submit Order</button>

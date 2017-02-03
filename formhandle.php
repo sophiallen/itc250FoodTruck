@@ -1,7 +1,11 @@
 <?php
 	echo '<pre>';
 	$data = json_decode($_POST['order_data']);
-/* Result: 
+	var_dump($data);
+	echo '</pre>';
+
+
+  /* Result: 
 object(stdClass)#1 (3) {
   ["Taco"]=>
   object(stdClass)#2 (3) {
@@ -32,7 +36,6 @@ object(stdClass)#1 (3) {
   }
 }
 */
+ //Access special instructions: $_POST['special_instructions']
 
-	var_dump($data);
-	echo '</pre>';
 ?>
