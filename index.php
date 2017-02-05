@@ -1,4 +1,27 @@
-<?php require 'includes/MenuDisplay.php'; ?>
+<?php require 'includes/MenuDisplay.php';
+
+function show_form()
+{
+	echo '<h2>Menu</h2>
+ 	<form action="index.php" method="post">';
+	$menu = new MenuDisplay();
+	echo $menu->get_menu();
+
+ 	echo '<label>Special Instructions: </label><br/>
+ 	<textarea name="special_instructions"></textarea>
+
+ 	<input type="hidden"  id="formData" name="order_data" value=""/>
+ 	</form>
+ 	<button id="sendOrder">Submit Order</button>';
+}
+
+function show_receipt()
+{
+	echo 'POST';
+	require 'formhandle.php';
+}
+
+?>
 
 <html>
  <head>
@@ -22,18 +45,18 @@
  	</style>
  </head>
  <body>
- 	<h1>Menu</h1>
- 	<form action="formhandle.php" method="post">
- 		<?php 
- 			$menu = new MenuDisplay();
- 			echo $menu->get_menu();
- 		 ?>
- 		 <label>Special Instructions: </label><br/>
- 		 <textarea name="special_instructions"></textarea>
+ 	<h1>Equipo de Dos' Tacos</h1>
+ 	<?php 
+ 		if ($_POST)
+ 		{
+ 			show_receipt();
+ 		}
+ 		else 
+ 		{
+ 			show_form();
+ 		}
+ 	?>
 
- 		 <input type="hidden"  id="formData" name="order_data" value=""/>
- 	</form>
- 	<button id="sendOrder">Submit Order</button>
  	<!-- JQuery -->
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
  	<!--Js for submitting the form as a json object (makes parsing during formhandle.php easier)-->

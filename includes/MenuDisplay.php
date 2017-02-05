@@ -39,8 +39,6 @@ class MenuDisplay
 			 array('traditional', 'extra-sweet'), $standard_drink_sizes),
 			new DrinkItem('Jarritos Soda', 'Refreshing soda with a wide variety of flavors', 1.25, $standard_quantities,
 			 array('Cola', 'Jamaica', 'Lima-Limon', 'Guayaba', 'Limon'), array('12.5oz bottle')),
-			new DrinkItem('Coffee', 'Freshly brewed coffee from local roasters', 1.25, $standard_quantities,
-				array('dark roast', 'medium roast'), $standard_drink_sizes),
 			new DrinkItem('Water Bottle', 'Chilled bottle of water', 1, $standard_quantities,
 				array('Dasani', 'San Pellegrino'), array('12oz bottle', '20oz bottle'))
 			);
@@ -57,6 +55,8 @@ class MenuDisplay
 		}
 
 		$this->form = $menu;
+		$this->entrees = $entrees;
+		$this->drinks = $drinks;
 	}
 
 	public function get_menu()
