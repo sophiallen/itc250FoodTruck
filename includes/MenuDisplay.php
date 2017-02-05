@@ -19,7 +19,7 @@ class MenuDisplay
 	function __construct()
 	{
 		$standard_proteins = array('beef', 'chicken','pork','veggie crumble');
-		$standard_toppings = array('none','cheese','jalapenos','olives');
+		$standard_toppings = array('cojita cheese','jalapenos','olives');
 
 		$standard_quantities = array(0,1,2,3,4,5,6,7,8);
 		//($name, $description, $price, $quantities, $options, $extras)

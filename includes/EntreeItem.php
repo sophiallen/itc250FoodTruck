@@ -44,13 +44,11 @@ class EntreeItem extends MenuItem
 		 $field .= '</select>';
 
 		$field .= "<br/> Extras: ";
-		$field .= '<select name='.$this->name.'_extras>';
 
 
-		//TODO: MAKE EXTRAS CHECKBOXES (NOT SELECTS)
 		foreach ($this->extras as $extra)
 		{
-			$field .= '<option value='.$extra.'>'.$extra.'</option>';
+			$field .= '<input type="checkbox" name="'.$extra.'">'.$extra.'</input>';
 		}
 		 $field .= '</select>';
 

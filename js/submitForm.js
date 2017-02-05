@@ -22,6 +22,8 @@ function setFormData(){
 
 	for (var i = 0; i < items.length; i++){
 		var children = items[i].getElementsByTagName('select');
+		var extras = items[i].getElementsByTagName('input');
+
 		var quantity = children[0].value;
 
 		if (quantity > 0){
@@ -33,6 +35,13 @@ function setFormData(){
 				itemObj[dataName] = children[j].value;
 			}
 
+			var addOns = [];
+			for (var j =0; j < extras.length; j++){
+				if (extras[j].checked){
+					addOns.push(extras[i].name);
+				}
+			}
+			itemObj[Extras] = addOns;
 			data[itemName] = itemObj;
 		}
 	}
