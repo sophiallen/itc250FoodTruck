@@ -33,11 +33,16 @@ class MenuDisplay
 		);
 
 		//$name, $description, $price, $quantities, $flavors, $sizes
+		$standard_drink_sizes = array('small', 'medium', 'large');
 		$drinks = array(
-			new DrinkItem('Horchata', 'Sweetened rice milk with traditional spices', 2.5, array(0,1,2,3,4,5,6),
-			 array('traditional', 'extra-sweet'), array('small', 'medium', 'large')),
-			new DrinkItem('Jarritos Soda', 'Refreshing soda with a wide variety of flavors', 1.25, array(0,1,2,3,4,5,6),
-			 array('Cola', 'Jamaica', 'Lima-Limon', 'Guayaba', 'Limon'), array('12.5oz bottle'))
+			new DrinkItem('Horchata', 'Sweetened rice milk with traditional spices', 2.5, $standard_quantities,
+			 array('traditional', 'extra-sweet'), $standard_drink_sizes),
+			new DrinkItem('Jarritos Soda', 'Refreshing soda with a wide variety of flavors', 1.25, $standard_quantities,
+			 array('Cola', 'Jamaica', 'Lima-Limon', 'Guayaba', 'Limon'), array('12.5oz bottle')),
+			new DrinkItem('Coffee', 'Freshly brewed coffee from local roasters', 1.25, $standard_quantities,
+				array('dark roast', 'medium roast'), $standard_drink_sizes),
+			new DrinkItem('Water Bottle', 'Chilled bottle of water', 1, $standard_quantities,
+				array('Dasani', 'San Pellegrino'), array('12oz bottle', '20oz bottle'))
 			);
 
 		$menu = '<h3>Entrees</h4>';
