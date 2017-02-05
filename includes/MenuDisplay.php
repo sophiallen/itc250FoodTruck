@@ -6,7 +6,7 @@
 */
 require 'MenuItem.php';
 require 'EntreeItem.php';
-
+require 'DrinkItem.php';
 
 
 class MenuDisplay
@@ -32,10 +32,23 @@ class MenuDisplay
 			 $standard_quantities,  $standard_proteins, $standard_toppings)
 		);
 
-		$menu = '';
+		//$name, $description, $price, $quantities, $flavors, $sizes
+		$drinks = array(
+			new DrinkItem('Horchata', 'Sweetened rice milk with traditional spices', 2.5, array(0,1,2,3,4,5,6),
+			 array('traditional', 'extra-sweet'), array('small', 'medium', 'large')),
+			new DrinkItem('Jarritos Soda', 'Refreshing soda with a wide variety of flavors', 1.25, array(0,1,2,3,4,5,6),
+			 array('Cola', 'Jamaica', 'Lima-Limon', 'Guayaba', 'Limon'), array('12.5oz bottle'))
+			);
+
+		$menu = '<h3>Entrees</h4>';
 
 		foreach ($entrees as $item){
 			$menu .= $item->toFormField();
+		}
+
+		$menu .= '<h3> Drinks </h3>';
+		foreach ($drinks as $drink){
+			$menu .= $drink->toFormField();
 		}
 
 		$this->form = $menu;

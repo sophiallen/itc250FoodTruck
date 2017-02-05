@@ -24,7 +24,6 @@
  <body>
  	<h1>Menu</h1>
  	<form action="formhandle.php" method="post">
- 		<h4>Entrees</h4><br/>
  		<?php 
  			$menu = new MenuDisplay();
  			echo $menu->get_menu();
