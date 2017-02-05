@@ -38,10 +38,10 @@ function setFormData(){
 			var addOns = [];
 			for (var j =0; j < extras.length; j++){
 				if (extras[j].checked){
-					addOns.push(extras[i].name);
+					addOns.push(extras[j].name);
 				}
 			}
-			itemObj[Extras] = addOns;
+			itemObj['extras'] = addOns;
 			data[itemName] = itemObj;
 		}
 	}
