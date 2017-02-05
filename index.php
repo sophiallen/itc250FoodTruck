@@ -17,8 +17,7 @@ function show_form()
 
 function show_receipt()
 {
-	echo 'POST';
-	require 'formhandle.php';
+	require 'includes/formhandle.php';
 }
 
 ?>
