@@ -49,6 +49,11 @@ function show_receipt()
  		if ($_POST)
  		{
  			show_receipt();
+
+ 			//code for displaying raw order data:
+ 			// echo '<pre>';
+ 			// echo var_dump(json_decode($_POST['order_data']));
+ 			// echo '</pre>';
  		}
  		else 
  		{

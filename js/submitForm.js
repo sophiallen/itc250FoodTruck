@@ -29,6 +29,10 @@ function setFormData(){
 		if (quantity > 0){
 			var itemName = children[0].name.split("_")[0];
 			var itemObj = {};
+			
+			var itemPrice = items[i].firstChild.innerText.split(" |")[0];
+			itemPrice = parseFloat(itemPrice.substr(1));
+			itemObj["price"] = itemPrice;
 
 			for (var j = 0; j < children.length; j++){
 				var dataName = children[j].name.split("_")[1];
