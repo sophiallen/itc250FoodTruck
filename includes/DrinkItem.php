@@ -32,7 +32,7 @@ class DrinkItem extends MenuItem
 		$drink_field .= parent::toFormField();
         
         $drink_field .= '<br/> Beverage Flavor:';
-        $drink_field .= '<select name='.$this->name.'_flavor>';
+        $drink_field .= '<select name="'.$this->name.'_flavor">';
         
         foreach ($this->flavors as $flavor)
         {

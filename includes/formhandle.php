@@ -86,7 +86,7 @@ foreach ($data as $itemName => $itemDetailsArray)
     //if it has something in $protein it is an entree
     if ($protein != '')
     {
-        $order .= "$quantity $itemName"  . ($quantity > 1 ? 's' : '') . " : $protein, extras: $extras <br /> \$$itemTotal <br /><br />";
+        $order .= "$quantity $protein $itemName"  . ($quantity > 1 ? 's' : '') . " : ".'<br/>'."extras: $extras <br /> \$$itemTotal <br /><br />";
     }
     
     //if it has something in $flavor it is a drink
