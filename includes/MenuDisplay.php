@@ -34,11 +34,12 @@ class MenuDisplay
 
 		//$name, $description, $price, $quantities, $flavors, $sizes
 		$standard_drink_sizes = array('small', 'medium', 'large');
+
 		$drinks = array(
-			new DrinkItem('Horchata', 'Sweetened rice milk with traditional spices', 2.5, $standard_quantities,
-			 array('traditional', 'extra-sweet'), $standard_drink_sizes),
-			new DrinkItem('Jarritos Soda', 'Refreshing soda with a wide variety of flavors', 1.25, $standard_quantities,
+			new DrinkItem('Jarritos Soda', 'Your favorite flavor by Jarritos', 2.25, $standard_quantities,
 			 array('Cola', 'Jamaica', 'Lima-Limon', 'Guayaba', 'Limon'), array('12.5oz bottle')),
+			new DrinkItem('Fanta', 'Refreshing flavored sodas by Fanta', 2.25, $standard_quantities, 
+				array('orange','zero orange','grape','peach','pinapple'), array('small', 'medium', 'large')),
 			new DrinkItem('Water Bottle', 'Chilled bottle of water', 1, $standard_quantities,
 				array('Dasani', 'San Pellegrino'), array('12oz bottle', '20oz bottle'))
 			);

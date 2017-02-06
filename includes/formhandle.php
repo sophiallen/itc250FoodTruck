@@ -5,13 +5,17 @@
 *   It must give an accurate report of the details of the order
 *   and give an accurate subtotal, tax and total to display.
 *
-*	@author Sophia Allen, Joseph Wanderer
-*   @todo incorporate drink orders.
-*   @todo improve aesthetics with html/css.
+*   @author Sophia Allen, Joseph Wanderer
 **/
 
 //decode the json produced by Sophia's javascript. "true" makes it return an array rather than defaulting to a stdClass object.
-$data = json_decode($_POST['order_data'], true);
+    $data = json_decode($_POST['order_data'], 2);
+
+//$itemCount = get_object_vars($data);
+
+//echo '<pre>';
+//var_dump($itemCount);
+//echo '</pre>';
 
 //initialize variables
 //$order holds the string that makes up the order/receipt that will be echoed at the end
@@ -20,13 +24,7 @@ $order = '';
 $subtotal = 0;
 //sales tax is 9.6% in Seattle
 $taxRate = 0.096;
-//This is a lookup array to get the price for each item
-$prices = array
-    ("Taco" => 3.25,
-     "Burrito" => 4.00,
-     "Quesadilla" => 5.25,
-     "item4" => 5.25,
-    );
+
 
 //loop through each item. Each item is stored as an array.
 foreach ($data as $itemName => $itemDetailsArray)
@@ -34,8 +32,10 @@ foreach ($data as $itemName => $itemDetailsArray)
 
     //variables to capture the values of each item detail to make formatting the text later easier
     //$itemTotal is to store $quantity * price. Prices are stored in the $prices array.
+    $price = 0;
     $quantity = 0;
     $protein = '';
+    $extras = array();
     $flavor = '';
     $size = '';
     $itemTotal = 0;
@@ -47,6 +47,11 @@ foreach ($data as $itemName => $itemDetailsArray)
         //switch statement to assign each property to its respective variable
         switch ($detail)
         {
+                
+            case "price":
+                $price = $value;
+                break;
+                
             case "quantity":
                 $quantity = $value;
                 break;
@@ -55,27 +60,28 @@ foreach ($data as $itemName => $itemDetailsArray)
                 $protein = $value;
                 break;
                 
+            case "extras":
+                $extras = $value;
+                break;
+                
             case "flavor":
                 $flavor = $value;
                 break;
                 
             case "size":
-                $sizes = $value;
+                $size = $value;
                 break;
                 
         }//end switch
-        
-                
+       
         
     }//end loop over item details
     
-    $itemTotal = number_format($quantity * $prices[$itemName],2);
+    $itemTotal = number_format($quantity * $price,2);
     
-    $extras = '';
-    if (isset($_POST[$itemName.'_extras']))
-    {
-    $extras = implode(", ",$_POST[$itemName.'_extras']);
-    }
+  
+    $extras = implode(", ",$extras);
+    
     
     //if it has something in $protein it is an entree
     if ($protein != '')
@@ -86,7 +92,7 @@ foreach ($data as $itemName => $itemDetailsArray)
     //if it has something in $flavor it is a drink
     if ($flavor != '')
     {
-        $order .= "$quantity $itemName(s): $flavor, size: $size <br /> \$$itemTotal <br /><br />";
+        $order .= "$quantity $itemName"  . ($quantity > 1 ? 's' : '') . ": $flavor, size: $size <br /> \$$itemTotal <br /><br />";
     }
     
     //Add up each item total to get the subtotal
@@ -107,6 +113,5 @@ $order .= "notes: $notes <br /> <br /> subtotal: \$$subtotal <br /> tax: \$$tota
 
 //Print the order/receipt
 echo $order;
-
 
 ?>

@@ -48,9 +48,10 @@ class EntreeItem extends MenuItem
 
 		foreach ($this->extras as $extra)
 		{
-			$field .= '<input type="checkbox" name="'.$extra.'">'.$extra.'</input>';
+			$field .= '<input type="checkbox" name="'.$extra.'" value="'.$extra.'">'.$extra.'</input>';
 		}
-		 $field .= '</select>';
+		
+		$field .= '</select>';
 
 		$field .= '</div><br/>';
 
