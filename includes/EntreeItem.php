@@ -39,9 +39,9 @@ class EntreeItem extends MenuItem
 
 		foreach ($this->options as $option)
 		{
-			$field .= '<option value='.$option.'>'.$option.'</option>';
+			$field .= '<option value="'.$option.'">'.$option.'</option>';
 		}
-		 $field .= '</select>';
+		$field .= '</select>';
 
 		$field .= "<br/> Extras: ";
 

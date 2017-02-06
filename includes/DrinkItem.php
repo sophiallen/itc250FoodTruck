@@ -31,23 +31,21 @@ class DrinkItem extends MenuItem
         $drink_field = '<div class="menuItem drinkItem">'; //intial wrapper for styling purposes
 		$drink_field .= parent::toFormField();
         
-        $drink_field .= '<br> Beverage Flavor:';
+        $drink_field .= '<br/> Beverage Flavor:';
         $drink_field .= '<select name='.$this->name.'_flavor>';
         
         foreach ($this->flavors as $flavor)
         {
-            $drink_field .= '<option value='.$flavor.'>'.$flavor.'</option>';    
+            $drink_field .= '<option value="'.$flavor.'">'.$flavor.'</option>';    
         }
         $drink_field .= '</select>';
         
         $drink_field .= '<br> Size: ';
-        $drink_field .= '<select name='.$this->name.'_size>';
+        $drink_field .= '<select name="'.$this->name.'_size">';
         
         foreach ($this->sizes as $size)
         {
-            
-            $drink_field .= '<option value='.$size.'>'.$size.'</option>';
-            
+            $drink_field .= '<option value="'.$size.'">'.$size.'</option>';
         }
         
         $drink_field .= '</select>';
