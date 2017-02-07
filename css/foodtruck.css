@@ -1,0 +1,68 @@
+/*GLOBAL STYLES*/
+
+html, h1, h2, h3, h4, h5, h6{
+    font-family: Raleway;
+}
+html {
+    background-color: cadetblue;
+}
+
+body {
+    width: 75%;
+    background-color: beige;
+    margin: 2em auto;
+    padding: 1em;
+    text-align: center;
+}
+.menuItem{
+    width: 100%;
+    text-align:left;
+    padding:10px;
+    line-height: 35px;
+    color: darkslategray;
+}
+
+strong{
+    color: darkslategray;
+}
+
+select{
+    border:0;
+    margin:10px;
+    color: #8f4620;
+    width:auto;
+    font-weight:700;
+    background-color: #ffffff;
+    
+}
+
+label{
+    color: #8f4620;
+    font-weight:600;
+}
+
+.extras-checkbox{
+    border:0;
+    margin: 10px;
+}
+
+textarea{
+    width:300px;
+    height:60px;
+}
+
+div.receiptItem {
+    border-bottom: 1px dotted gainsboro;
+    padding: 1em;
+    width: 50%;
+    margin: 0 auto;
+    background: ghostwhite;
+}
+
+.receiptItem p {
+    margin: 0 .25em;
+}
+
+.itemTotal {
+    float: right;
+} 

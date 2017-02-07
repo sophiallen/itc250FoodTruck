@@ -37,7 +37,6 @@ foreach ($data as $itemName => $itemDetailsArray)
     // loop through each detail in the item
     foreach ($itemDetailsArray as $detail => $value)
     {
-        
         //switch statement to assign each property to its respective variable
         switch ($detail)
         {
@@ -76,19 +75,25 @@ foreach ($data as $itemName => $itemDetailsArray)
   
     $extras = implode(", ",$extras);
     
-    
+    $order .= '<div class="receiptItem">';
+
     //if it has something in $protein it is an entree
     if ($protein != '')
     {
-        $order .= "$quantity $itemName"  . ($quantity > 1 ? 's' : '') . " : $protein".'<br/>'."Extras: $extras <br /> \$$itemTotal <br /><br />";
+        $order .= '<p> <strong>' . $quantity . ' ' . $itemName . ($quantity > 1 ? 's' : '') . '</strong> : ' . $protein . ' </p>' . '<span class="itemTotal"> $' . $itemTotal . '</span>'
+        .'<p> Extras: '. $extras .'</p>';
     }
     
     //if it has something in $flavor it is a drink
     if ($flavor != '')
     {
-        $order .= "$quantity $itemName"  . ($quantity > 1 ? 's' : '') . ": $flavor, Size: $size <br/> \$$itemTotal <br /><br/>";
+        $order .= '<p><strong>' . $quantity . ' ' . $itemName . ($quantity > 1 ? 's' : '') . '</strong>' . ': '
+        . $flavor.'</p>'
+        . '<span class="itemTotal"> $' . $itemTotal . '</span>' 
+        .'<p> Size: '. $size .'</p>'.'<p class="itemTotal" $'. $itemTotal .'</p>';
     }
     
+    $order .= '</div>'; //end receiptItem div
     //Add up each item total to get the subtotal
     $subtotal += $itemTotal;
     
@@ -102,7 +107,10 @@ $total = number_format($totalTax + $subtotal,2);
 //$_POST['special_instructions'] contains any special instruction entered into the special instructions text area in the form
 $notes = $_POST['special_instructions'];
 
-$order .= "Notes: $notes ".'<br/>'." subtotal: \$$subtotal <br/> tax: \$$totalTax".' <br/> '."total: \$$total";
+$order .= '<p><strong> Notes: </strong>'. $notes . '</p> '
+    . ' <p><strong> Subtotal: </strong> $' . $subtotal . '</p>'
+    .'<p><strong> Tax: </strong>$'. $totalTax . '</p>'
+    .' <p> <strong> Total: </strong>$'. $total .'</p>';
 
 //Print the order/receipt
 echo $order;

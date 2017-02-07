@@ -34,25 +34,16 @@ function show_receipt()
 <html>
  <head>
  	<title>Food Truck</title>
- 	<style type="text/css">
- 		html {
- 			background-color: gainsboro;
- 		}
-
- 		body {
- 			width: 75%;
- 			margin: 2em auto;
- 			background-color: white;
- 			padding: 1.5em;
- 			font-family: 'calibri';
- 		}
- 		textarea {
- 			width: 50%;
- 		}
-
- 	</style>
+	<meta charset="utf-8" />
+	<meta name="robots" content="noindex,nofollow" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta name="description" content="A food Truck Menu/Ordering Application" />
+	<link href='https://fonts.googleapis.com/css?family=Unkempt:400,700|Averia+Sans+Libre:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/foodtruck.css">
  </head>
  <body>
+ 	<div class="site-wrapper">
  	<h1>Equipo de Dos' Tacos</h1>
  	<?php 
  		//Sense whether to display menu or receipt based on request type. 
@@ -75,5 +66,6 @@ function show_receipt()
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
  	<!--js for submitting the form as a json object (makes parsing during formhandle.php easier)-->
  	<script src="js/submitForm.js"></script>
+ 	</div>
  </body>
  </html>

@@ -24,6 +24,8 @@ class EntreeItem extends MenuItem
 		//give basic information to parent class (MenuItem). 
 		parent::__construct($name, $description, $price, $quantities);
 
+		self::IN_STOCK += 20;
+
 		//initialize properties unique to this class
 		$this->options = $options;
 		$this->extras = $extras;
@@ -60,11 +62,11 @@ class EntreeItem extends MenuItem
 
 
 	//checks that item is available for sale, and decrements its inventory to reflect sale. 
-	public function sell()
+	public function sell($quantity)
 	{
 		if (self::$IN_STOCK > 0)
 		{
-			self:$IN_STOCK--;
+			self:$IN_STOCK -= $quantity;
 			parent::sell();
 			return true;
 		} 
