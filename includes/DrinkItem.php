@@ -13,22 +13,21 @@ class DrinkItem extends MenuItem
     public $flavors;
     public $sizes;
     
+
     public function __construct($name, $description, $price, $quantities, $flavors, $sizes)
-    {
-        
-        
+    {   
+        //send essential info to parent class constructor. 
         parent::__construct($name, $description, $price, $quantities);
         
         $this->flavors = $flavors;
-        $this->sizes = $sizes;
-        
-        
+        $this->sizes = $sizes; 
     }
     
+    //Renders the current instance as a form field with appropriate inputs. 
     public function toFormField()
     {
         
-        $drink_field = '<div class="menuItem drinkItem">'; //intial wrapper for styling purposes
+        $drink_field = '<div class="menuItem drinkItem">'; //wrapper for styling & js purposes
 		$drink_field .= parent::toFormField();
         
         $drink_field .= '<br/> Beverage Flavor:';
@@ -51,13 +50,8 @@ class DrinkItem extends MenuItem
         $drink_field .= '</select>';
         $drink_field .= '</div><br>';
         
-        return $drink_field;
-        
-        
-    }
-    
-    
-    
+        return $drink_field;    
+    } 
 }
 
 ?>

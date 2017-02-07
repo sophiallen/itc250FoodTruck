@@ -2,8 +2,8 @@
 
 /**
 *
-* An example of a menu item class that can be customized to fit 
-* multiple types of menu items
+* EntreeItem.php - Class that extends MenuItem with the information necessary to represent  
+* entree items.
 *
 * @author Sophia Allen
 **/
@@ -31,7 +31,7 @@ class EntreeItem extends MenuItem
 
 	public function toFormField()
 	{
-		$field = '<div class="menuItem">'; //intial wrapper for styling purposes
+		$field = '<div class="menuItem">'; //intial wrapper for js & styling purposes
 		$field .= parent::toFormField();  
 
 		$field .= "<br/> Meat Options:";

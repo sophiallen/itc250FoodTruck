@@ -1,8 +1,8 @@
 <?php 
 
 /*
-	Class for to generating menu items and displays them as form elements. 
-	@author Sophia Allen
+	MenuDisplay.php Class for to generating menu items and rendering them as form elements. 
+	@author Sophia Allen, with contributions from Joe Wanderer and Sean Gilliland
 */
 require 'MenuItem.php';
 require 'EntreeItem.php';
@@ -18,8 +18,8 @@ class MenuDisplay
 	//intializes menu display with standard menu items. 
 	function __construct()
 	{
-		$standard_proteins = array('beef', 'chicken','pork','veggie crumble');
-		$standard_toppings = array('cojita cheese','jalapenos','olives');
+		$standard_proteins = array('Beef', 'Chicken','Pork','Veggie Crumble');
+		$standard_toppings = array('Cojita cheese','Jalapenos','Olives');
 
 		$standard_quantities = array(0,1,2,3,4,5,6,7,8);
 		//($name, $description, $price, $quantities, $options, $extras)
@@ -33,7 +33,7 @@ class MenuDisplay
 		);
 
 		//$name, $description, $price, $quantities, $flavors, $sizes
-		$standard_drink_sizes = array('small', 'medium', 'large');
+		$standard_drink_sizes = array('Small', 'Medium', 'Large');
 
 		$drinks = array(
 			new DrinkItem('Jarritos Soda', 'Your favorite flavor by Jarritos', 2.25, $standard_quantities,

@@ -1,5 +1,13 @@
-<?php require 'includes/MenuDisplay.php';
+<?php 
+/**
+*  index.php  - The main page of the app, controls whether the menu (form) or the reciept (form results) is displayed.
+*  @author Team Two: S. Allen, J. Wanderer, S. Gilliland, B. Coats
+**/
 
+
+require 'includes/MenuDisplay.php';
+
+//Renders the form by calling the get_menu method of a new MenuDisplay
 function show_form()
 {
 	echo '<h2>Menu</h2>
@@ -15,6 +23,7 @@ function show_form()
  	<button id="sendOrder">Submit Order</button>';
 }
 
+//function to display receipt by executing the formhandler. 
 function show_receipt()
 {
 	require 'includes/formhandle.php';
@@ -46,6 +55,7 @@ function show_receipt()
  <body>
  	<h1>Equipo de Dos' Tacos</h1>
  	<?php 
+ 		//Sense whether to display menu or receipt based on request type. 
  		if ($_POST)
  		{
  			show_receipt();
@@ -63,7 +73,7 @@ function show_receipt()
 
  	<!-- JQuery -->
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
- 	<!--Js for submitting the form as a json object (makes parsing during formhandle.php easier)-->
+ 	<!--js for submitting the form as a json object (makes parsing during formhandle.php easier)-->
  	<script src="js/submitForm.js"></script>
  </body>
  </html>

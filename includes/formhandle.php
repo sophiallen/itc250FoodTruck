@@ -5,17 +5,11 @@
 *   It must give an accurate report of the details of the order
 *   and give an accurate subtotal, tax and total to display.
 *
-*   @author Sophia Allen, Joseph Wanderer
+*   @author Joseph Wanderer, Sophia Allen
 **/
 
 //decode the json produced by Sophia's javascript. "true" makes it return an array rather than defaulting to a stdClass object.
     $data = json_decode($_POST['order_data'], 2);
-
-//$itemCount = get_object_vars($data);
-
-//echo '<pre>';
-//var_dump($itemCount);
-//echo '</pre>';
 
 //initialize variables
 //$order holds the string that makes up the order/receipt that will be echoed at the end
@@ -86,13 +80,13 @@ foreach ($data as $itemName => $itemDetailsArray)
     //if it has something in $protein it is an entree
     if ($protein != '')
     {
-        $order .= "$quantity $protein $itemName"  . ($quantity > 1 ? 's' : '') . " : ".'<br/>'."extras: $extras <br /> \$$itemTotal <br /><br />";
+        $order .= "$quantity $itemName"  . ($quantity > 1 ? 's' : '') . " : $protein".'<br/>'."Extras: $extras <br /> \$$itemTotal <br /><br />";
     }
     
     //if it has something in $flavor it is a drink
     if ($flavor != '')
     {
-        $order .= "$quantity $itemName"  . ($quantity > 1 ? 's' : '') . ": $flavor, size: $size <br /> \$$itemTotal <br /><br />";
+        $order .= "$quantity $itemName"  . ($quantity > 1 ? 's' : '') . ": $flavor, Size: $size <br/> \$$itemTotal <br /><br/>";
     }
     
     //Add up each item total to get the subtotal
@@ -106,10 +100,9 @@ $totalTax = number_format($taxRate * $subtotal,2);
 $total = number_format($totalTax + $subtotal,2);
 
 //$_POST['special_instructions'] contains any special instruction entered into the special instructions text area in the form
-//NOTE: currently newlines are not preserved
 $notes = $_POST['special_instructions'];
 
-$order .= "notes: $notes <br /> <br /> subtotal: \$$subtotal <br /> tax: \$$totalTax <br /> total: \$$total";
+$order .= "Notes: $notes ".'<br/>'." subtotal: \$$subtotal <br/> tax: \$$totalTax".' <br/> '."total: \$$total";
 
 //Print the order/receipt
 echo $order;

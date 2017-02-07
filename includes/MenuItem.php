@@ -16,9 +16,8 @@
 		//static property to track total number of items in stock, and assist in generating IDs for menu items. 
 		protected static $INVENTORY_SIZE = 0;
 
-
 		/*
-			Constructs a 
+			Constructs a MenuItem
 			@param $name: the name of the item to be displayed. 
 			@param $description: a short description of the menu item. 
 			@param $price: the price per single unit of the item. 
@@ -26,21 +25,20 @@
 		*/
 		public function __construct($name, $description, $price, $quantities)
 		{
+			//increment number of items in inventory and generate ID
 			self::$INVENTORY_SIZE += 1;
 			$this->ID = self::$INVENTORY_SIZE;
 
+			//initialize property values
 			$this->name = $name;
 			$this->description = $description;
 			$this->price = $price;
 			$this->quantities = $quantities;
-
-			//increment number of items in inventory and generate ID
-
 		}
 
 		//Function to return the necessary form inputs to display the 
-		//item in the form. Child methods can add additional inputs to the base
-		//provided here. 
+		//item in the form. Child methods in EntreeItem, DrinkItem can add 
+		//additional inputs to the base provided here. 
 		public function toFormField()
 		{
 			$menu = '';
@@ -70,5 +68,3 @@
 	}
 
 ?>
-
-
