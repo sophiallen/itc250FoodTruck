@@ -107,10 +107,15 @@ $total = number_format($totalTax + $subtotal,2);
 //$_POST['special_instructions'] contains any special instruction entered into the special instructions text area in the form
 $notes = $_POST['special_instructions'];
 
-$order .= '<p><strong> Notes: </strong>'. $notes . '</p> '
-    . ' <p><strong> Subtotal: </strong> $' . $subtotal . '</p>'
-    .'<p><strong> Tax: </strong>$'. $totalTax . '</p>'
-    .' <p> <strong> Total: </strong>$'. $total .'</p>';
+//TODO: Strip $notes of special chars. 
+
+$order .= '<div class="notes">
+            <p><strong> Notes: </strong></p>'
+            . '<p>'. $notes . '</p> 
+           </div>
+           <p><strong> Subtotal: </strong> $' . $subtotal . '</p>'
+         .'<p><strong> Tax: </strong>$'. $totalTax . '</p>'
+         .' <p> <strong> Total: </strong>$'. $total .'</p>';
 
 //Print the order/receipt
 echo $order;

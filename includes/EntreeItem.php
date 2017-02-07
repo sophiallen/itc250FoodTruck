@@ -60,7 +60,6 @@ class EntreeItem extends MenuItem
 		return $field;
 	}
 
-
 	//checks that item is available for sale, and decrements its inventory to reflect sale. 
 	public function sell($quantity)
 	{

@@ -51,7 +51,7 @@ textarea{
     height:60px;
 }
 
-div.receiptItem {
+div.receiptItem, div.notes {
     border-bottom: 1px dotted gainsboro;
     padding: 1em;
     width: 50%;
@@ -59,10 +59,15 @@ div.receiptItem {
     background: ghostwhite;
 }
 
-.receiptItem p {
+.receiptItem p, .notes p {
     margin: 0 .25em;
 }
 
 .itemTotal {
     float: right;
 } 
+
+div.notes {
+    border-bottom: none;
+    margin-top: 1em;
+}
