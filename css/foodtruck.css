@@ -3,7 +3,12 @@
 html, h1, h2, h3, h4, h5, h6{
     font-family: Raleway;
 }
+
+h1 {
+    padding: .5em;
+}
 html {
+    background-image: url('http://data.whicdn.com/images/206067019/large.jpg');
     background-color: cadetblue;
 }
 
