@@ -7,6 +7,10 @@ html, h1, h2, h3, h4, h5, h6{
 h1 {
     padding: .5em;
 }
+
+h3 {
+    text-align: left;
+}
 html {
     background-image: url('http://data.whicdn.com/images/206067019/large.jpg');
     background-color: cadetblue;
@@ -65,14 +69,27 @@ div.receiptItem, div.notes {
 }
 
 .receiptItem p, .notes p {
-    margin: 0 .25em;
+    margin: .5em;
 }
 
 .itemTotal {
     float: right;
+    margin-top: -1.5em;
 } 
 
 div.notes {
     border-bottom: none;
     margin-top: 1em;
+}
+
+div.notes p {
+    white-space: pre-wrap;
+}
+
+div.totals {
+    background-color: ghostwhite;
+    border: 2px solid green;
+    padding: 1em;
+    width: 50%;
+    margin: 1em auto;
 }

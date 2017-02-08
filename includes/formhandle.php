@@ -9,7 +9,7 @@
 **/
 
 //decode the json produced by Sophia's javascript. "true" makes it return an array rather than defaulting to a stdClass object.
-    $data = json_decode($_POST['order_data'], 2);
+$data = json_decode($_POST['order_data'], 2);
 
 //initialize variables
 //$order holds the string that makes up the order/receipt that will be echoed at the end
@@ -19,83 +19,35 @@ $subtotal = 0;
 //sales tax is 9.6% in Seattle
 $taxRate = 0.096;
 
-
-//loop through each item. Each item is stored as an array.
-foreach ($data as $itemName => $itemDetailsArray)
+//loop through each item. 
+foreach ($data as $itemName => $itemDetails)
 {
 
-    //variables to capture the values of each item detail to make formatting the text later easier
-    //$itemTotal is to store $quantity * price. Prices are stored in the $prices array.
-    $price = 0;
-    $quantity = 0;
-    $protein = '';
-    $extras = array();
-    $flavor = '';
-    $size = '';
-    $itemTotal = 0;
-    
-    // loop through each detail in the item
-    foreach ($itemDetailsArray as $detail => $value)
-    {
-        //switch statement to assign each property to its respective variable
-        switch ($detail)
-        {
-                
-            case "price":
-                $price = $value;
-                break;
-                
-            case "quantity":
-                $quantity = $value;
-                break;
-            
-            case "protein":
-                $protein = $value;
-                break;
-                
-            case "extras":
-                $extras = $value;
-                break;
-                
-            case "flavor":
-                $flavor = $value;
-                break;
-                
-            case "size":
-                $size = $value;
-                break;
-                
-        }//end switch
-       
-        
-    }//end loop over item details
-    
-    $itemTotal = number_format($quantity * $price,2);
-    
-  
-    $extras = implode(", ",$extras);
-    
-    $order .= '<div class="receiptItem">';
-
-    //if it has something in $protein it is an entree
-    if ($protein != '')
-    {
-        $order .= '<p> <strong>' . $quantity . ' ' . $itemName . ($quantity > 1 ? 's' : '') . '</strong> : ' . $protein . ' </p>' . '<span class="itemTotal"> $' . $itemTotal . '</span>'
-        .'<p> Extras: '. $extras .'</p>';
-    }
-    
-    //if it has something in $flavor it is a drink
-    if ($flavor != '')
-    {
-        $order .= '<p><strong>' . $quantity . ' ' . $itemName . ($quantity > 1 ? 's' : '') . '</strong>' . ': '
-        . $flavor.'</p>'
-        . '<span class="itemTotal"> $' . $itemTotal . '</span>' 
-        .'<p> Size: '. $size .'</p>'.'<p class="itemTotal" $'. $itemTotal .'</p>';
-    }
-    
-    $order .= '</div>'; //end receiptItem div
-    //Add up each item total to get the subtotal
+    $itemTotal = number_format($itemDetails["quantity"] * $itemDetails["price"], 2);
     $subtotal += $itemTotal;
+
+    $order .= '<div class="receiptItem">';
+    $order .= '<p> <strong>' . $itemDetails['quantity'] . ' ' . $itemName 
+                . ($itemDetails['quantity'] > 1 ? 's' : '') . '</strong> : ';
+
+    //loop through each detail of each item
+    foreach ($itemDetails as $detail=>$value){
+        //don't echo price or quantity
+        if ($detail != "price" && $detail != "quantity")
+        {
+            //check for extras array (needs special printing)
+            if (is_array($value) && sizeof($value) > 0)
+            {
+                $order .=  '<p> Extras: '. implode(", ", $value).'</p>';
+            } 
+            else if (!is_array($value))  //not an array, print normally
+            {
+                $order .= '<p>'.$detail . ": ".$value.'</p>';
+            }
+        }
+    }
+    $order .= '<span class="itemTotal">$'.$itemTotal.'</span>';
+    $order .= '</div>';
     
 }//end loop over items
 
@@ -104,20 +56,19 @@ $subtotal = number_format($subtotal,2);
 $totalTax = number_format($taxRate * $subtotal,2);
 $total = number_format($totalTax + $subtotal,2);
 
-//$_POST['special_instructions'] contains any special instruction entered into the special instructions text area in the form
-$notes = $_POST['special_instructions'];
-
-//TODO: Strip $notes of special chars. 
+//special instruction entered into the special instructions text area in the form
+$notes = htmlspecialchars($_POST['special_instructions']);
 
 $order .= '<div class="notes">
-            <p><strong> Notes: </strong></p>'
-            . '<p>'. $notes . '</p> 
-           </div>
-           <p><strong> Subtotal: </strong> $' . $subtotal . '</p>'
-         .'<p><strong> Tax: </strong>$'. $totalTax . '</p>'
-         .' <p> <strong> Total: </strong>$'. $total .'</p>';
+            <p><strong> Notes: </strong></p>
+            <p>'. $notes. '</p>
+            </div>
+            <div class="totals">
+            <p><strong>Subtotal: </strong>$'.$subtotal.'<br/>
+               <strong>Tax: </strong> $'.$totalTax.'<br/>
+               <strong>Order Total:</strong>'.$total.'</p>
+            </div>'; 
 
-//Print the order/receipt
+//display order
 echo $order;
-
 ?>
