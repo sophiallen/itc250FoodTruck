@@ -24,7 +24,6 @@ class EntreeItem extends MenuItem
 		//give basic information to parent class (MenuItem). 
 		parent::__construct($name, $description, $price, $quantities);
 
-		self::IN_STOCK += 20;
 
 		//initialize properties unique to this class
 		$this->options = $options;
@@ -45,7 +44,7 @@ class EntreeItem extends MenuItem
 		}
 		$field .= '</select>';
 
-		$field .= "<br/> Extras: ";
+		$field .= "<br/> Extras (25 &cent; each) : ";
 
 
 		foreach ($this->extras as $extra)

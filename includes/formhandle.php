@@ -24,14 +24,14 @@ foreach ($data as $itemName => $itemDetails)
 {
 
     $itemTotal = number_format($itemDetails["quantity"] * $itemDetails["price"], 2);
-    $subtotal += $itemTotal;
 
     $order .= '<div class="receiptItem">';
     $order .= '<p> <strong>' . $itemDetails['quantity'] . ' ' . $itemName 
                 . ($itemDetails['quantity'] > 1 ? 's' : '') . '</strong> : ';
 
     //loop through each detail of each item
-    foreach ($itemDetails as $detail=>$value){
+    foreach ($itemDetails as $detail=>$value)
+    {
         //don't echo price or quantity
         if ($detail != "price" && $detail != "quantity")
         {
@@ -39,6 +39,10 @@ foreach ($data as $itemName => $itemDetails)
             if (is_array($value) && sizeof($value) > 0)
             {
                 $order .=  '<p> Extras: '. implode(", ", $value).'</p>';
+                //add 25 cents for each extra ordered. 
+                $extras_cost = (sizeof($value) * .25)*$itemDetails["quantity"];
+                $subtotal += $extras_cost;
+                $itemTotal += $extras_cost;
             } 
             else if (!is_array($value))  //not an array, print normally
             {
@@ -46,7 +50,9 @@ foreach ($data as $itemName => $itemDetails)
             }
         }
     }
-    $order .= '<span class="itemTotal">$'.$itemTotal.'</span>';
+    $subtotal += $itemTotal;
+
+    $order .= '<span class="itemTotal"> $'.number_format($itemTotal,2).'</span>';
     $order .= '</div>';
     
 }//end loop over items
@@ -64,9 +70,9 @@ $order .= '<div class="notes">
             <p>'. $notes. '</p>
             </div>
             <div class="totals">
-            <p><strong>Subtotal: </strong>$'.$subtotal.'<br/>
+               <p><strong>Subtotal: </strong> $'.$subtotal.'<br/>
                <strong>Tax: </strong> $'.$totalTax.'<br/>
-               <strong>Order Total:</strong>'.$total.'</p>
+               <strong>Order Total: </strong> $'.$total.'</p>
             </div>'; 
 
 //display order
