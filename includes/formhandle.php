@@ -41,7 +41,6 @@ foreach ($data as $itemName => $itemDetails)
                 $order .=  '<p> Extras: '. implode(", ", $value).'</p>';
                 //add 25 cents for each extra ordered. 
                 $extras_cost = (sizeof($value) * .25)*$itemDetails["quantity"];
-                $subtotal += $extras_cost;
                 $itemTotal += $extras_cost;
             } 
             else if (!is_array($value))  //not an array, print normally
